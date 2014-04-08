@@ -15,7 +15,7 @@ Bower를 통한 설치: `bower install leaflet.markercluster`
 
 사용법은 포함된 예제를 보십시오.
 
-[realworld example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.388.html) 처음 시작하기 좋습니다. 이것은 클러스터의 모든 기본기능을 사용합니다.
+[realworld example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.388.html) 처음 시작하기에 좋습니다. 이것은 클러스터의 모든 기본기능을 사용합니다.
 
 클러스터의 표현과 동작을 커스터마이징 하는 방법을 알아보려면, [custom example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html)을 확인하십시오. 
 
@@ -58,8 +58,7 @@ var markers = new L.MarkerClusterGroup({
 	}
 });
 ```
-이 예제를 확인하십오.
-Check out the [custom example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html) 
+이에 대한 [예제](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html)를 확인하십오 
 
 ### 모든 옵션
 기본 옵션 (boolean options):
@@ -70,12 +69,12 @@ Check out the [custom example](http://leaflet.github.com/Leaflet.markercluster/e
 
 다른 옵션
 * **animateAddingMarkers**: true로 설정하면 지도에 MarkerClusterGroup를 추가한 후에 개별 마커를 (MarkerClusterGroup에) 추가하는 것은 마커를 추가하고 움직여서 클러스터로 합칩니다. 대량의 마커를 추가할 때 보다 나은 성능을 위해서 기본 설정은 false입니다. addLayers는 지원하지 않고, 개별 마커를 가진 addLayers만 지원합니다.
-* **disableClusteringAtZoom**: If set, at this zoom level and below markers will not be clustered. This defaults to disabled. [See Example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld-maxzoom.388.html)
+* **disableClusteringAtZoom**: If set, at this zoom level and below markers will not be clustered. This defaults to disabled. [예제](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld-maxzoom.388.html)
 * **maxClusterRadius**: 중앙 마커에서 부터 커버하는 클러스터의 최대 반경(in pixels). 기본값은 80 입니다. 작은 값이면 더 작은 클러스터를 만들것입니다. 또한 현재 지도의 줌을 받아서 최대 클러스터 반경을 pixcel로 반환하는 함수를 사용할 수도 있습니다.
 * **polygonOptions**: 클러스터의 경계를 보여주기 위해 L.Polygon(points, options)를 만들때 전달하는 옵션
 * **singleMarkerMode**: true로 설정하면, 같은 크기의 클러스터로 보이게 하기 위해 추가된 모든 마커들의 아이콘을 대체합니다.
 * **spiderfyDistanceMultiplier**: 나선형으로 배치되는 마커들이 위치한 중심으로부터 떨어진 거리를 증가시키기 위해 1부터 증가시킵니다. 커다란 마커 아이콘을 사용할때 설정하며 기본값은 1입니다.
-* **iconCreateFunction**: 클러스터 아이콘을 생성하는 함수 [See default as example](https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542).
+* **iconCreateFunction**: 클러스터 아이콘을 생성하는 함수 [기본예제](https://github.com/Leaflet/Leaflet.markercluster/blob/15ed12654acdc54a4521789c498e4603fe4bf781/src/MarkerClusterGroup.js#L542).
 
 
 ## 이벤트
@@ -83,7 +82,6 @@ click, mouseover, 등의 이벤트를 등록하면, 클러스터 안의 마커�
 클러스터의 이벤트를 받기위해서는 'cluster' + 'eventIWant'의 형식의 이벤트명을 사용합니다. 예: 'clusterclick', 'clustermouseover'.
 
 두 경우 각각의 이벤트 핸들러의 예는 아래와 같습니다.
-
 ```javascript
 markers.on('click', function (a) {
 	console.log('marker ' + a.layer);
@@ -108,7 +106,7 @@ markers.on('clusterclick', function (a) {
 ### 클러스터의 경계에 맞추어 확대
 클러스터로부터 이벤트를 받을때, 간단하게 경계에 맞게 확대할 수 있습니다.
 높은 줌 레벨에서 모든 마커를 볼 수 있을 때, 현재의 줌에서 높은 레벨의 줌으로 확대 됩니다.
-사용 예로 [marker-clustering-zoomtobounds.html](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-zoomtobounds.html)을 보십시오.
+예제로 [marker-clustering-zoomtobounds.html](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-zoomtobounds.html)을 보십시오.
 ```javascript
 markers.on('clusterclick', function (a) {
 	a.layer.zoomToBounds();
@@ -130,7 +128,7 @@ addLayer, removeLayer 그리고 clearLayers 를 사용할 수 있고 대부분�
 ### 대량의 마커를 추가 및 삭제하기
 addLayers와 removeLayers는 대량으로 마커를 추가 삭제하기 위한 메소드입니다. 마커를 대량으로 추가/삭제시 단일 버전 보다 선호됩니다. 각각은 마커의 배열을 받습니다.
 
-많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 addLayers를 호출하여 삭제를 원하지 않는 마커를 다시 추가하는 것이 좋습니다.  상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
+많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 addLayers를 호출하여 삭제를 원하지 않는 마커를 다시 추가하는 것이 좋습니다. 상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
 
 
 ### 다른 메소드
