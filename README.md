@@ -62,13 +62,13 @@ var markers = new L.MarkerClusterGroup({
 Check out the [custom example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html) 
 
 ### 모든 옵션
-기본으로 설정된 옵션 (boolean options):
+기본 옵션 (boolean options):
 * **showCoverageOnHover**: 클러스터에 마우스를 올렸을 때 마커들의 범위를 보여줍니다.
 * **zoomToBoundsOnClick**: 클러스터를 클릭하였을 때 범위를 크게 보여줍니다.
 * **spiderfyOnMaxZoom**: 최대로 확대한 상태에서 클러스터를 클릭하였을 때 마커들을 볼 수 있도록 나선형으로 마커를 배치합니다(spiderfy). 그래서 모든 마커들을 볼 수 있습니다.
 * **removeOutsideVisibleBounds**: 성능을 위해서 뷰포트로부터 너무 먼 클러스터와 마커를 지도에서 지웁니다. 
 
-다른 옵션들
+다른 옵션
 * **animateAddingMarkers**: true로 설정하면 지도에 MarkerClusterGroup를 추가한 후에 개별 마커를 (MarkerClusterGroup에) 추가하는 것은 마커를 추가하고 움직여서 클러스터로 합칩니다. 대량의 마커를 추가할 때 보다 나은 성능을 위해서 기본 설정은 false입니다. addLayers는 지원하지 않고, 개별 마커를 가진 addLayers만 지원합니다.
 * **disableClusteringAtZoom**: If set, at this zoom level and below markers will not be clustered. This defaults to disabled. [See Example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld-maxzoom.388.html)
 * **maxClusterRadius**: 중앙 마커에서 부터 커버하는 클러스터의 최대 반경(in pixels). 기본값은 80 입니다. 작은 값이면 더 작은 클러스터를 만들것입니다. 또한 현재 지도의 줌을 받아서 최대 클러스터 반경을 pixcel로 반환하는 함수를 사용할 수도 있습니다.
@@ -96,40 +96,43 @@ markers.on('clusterclick', function (a) {
 
 ## 메소드
 
-### Getting the bounds of a cluster
-When you recieve an event from a cluster you can query it for the bounds.
-See [example/marker-clustering-convexhull.html](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-convexhull.html) for a working example.
+### 클러스터의 경계 얻기
+클러스터로부터 이벤트를 얻을 때, 경계를 조회할 수 있습니다.
+예제로 [example/marker-clustering-convexhull.html](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-convexhull.html)를 보십시오.
 ```javascript
 markers.on('clusterclick', function (a) {
 	map.addLayer(new L.Polygon(a.layer.getConvexHull()));
 });
 ```
 
-### Zooming to the bounds of a cluster
-When you recieve an event from a cluster you can zoom to its bounds in one easy step.
-If all of the markers will appear at a higher zoom level, that zoom level is zoomed to instead.
-See [marker-clustering-zoomtobounds.html](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-zoomtobounds.html) for a working example.
+### 클러스터의 경계에 맞추어 확대
+클러스터로부터 이벤트를 받을때, 간단하게 경계에 맞게 확대할 수 있습니다.
+높은 줌 레벨에서 모든 마커를 볼 수 있을 때, 현재의 줌에서 높은 레벨의 줌으로 확대 됩니다.
+사용 예로 [marker-clustering-zoomtobounds.html](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-zoomtobounds.html)을 보십시오.
 ```javascript
 markers.on('clusterclick', function (a) {
 	a.layer.zoomToBounds();
 });
 ```
 
-### Getting the visible parent of a marker
-If you have a marker in your MarkerClusterGroup and you want to get the visible parent of it (Either itself or a cluster it is contained in that is currently visible on the map).
-This will return null if the marker and its parent clusters are not visible currently (they are not near the visible viewpoint)
-```
+### 마커의 보이는 부모(마커 자체나 마커를 포함한 클러스터)를 얻기
+MarkerClusterGroup에 마커가 있고 보이는 부모를 얻고 싶을때 사용합니다. (마커나 그것을 포함한 클러스터가 지도 상에서 현재 보일때).
+마커와 그것을 포함한 클러스터가 현재 보이지 않는다면 null을 반환합니다(볼 수 있는 뷰포트에 근접해 있지 않습니다).
+
+```javascript
 var visibleOne = markerClusterGroup.getVisibleParent(myMarker);
 console.log(visibleOne.getLatLng());
 ```
 
-### Adding and removing Markers
-addLayer, removeLayer and clearLayers are supported and they should work for most uses.
+### 마커 추가 및 삭제하기
+addLayer, removeLayer 그리고 clearLayers 를 사용할 수 있고 대부분의 용도로 작동합니다.
 
-### Bulk adding and removing Markers
-addLayers and removeLayers are bulk methods for adding and removing markers and should be favoured over the single versions when doing bulk addition/removal of markers. Each takes an array of markers
+### 대량의 마커를 추가 및 삭제하기
+addLayers와 removeLayers는 대량으로 마커를 추가 삭제하기 위한 메소드입니다. 마커를 대량으로 추가/삭제시 단일 버전 보다 선호됩니다. 각각은 마커의 배열을 받습니다.
 
-If you are removing a lot of markers it will almost definitely be better to call clearLayers then call addLayers to add the markers you don't want to remove back in. See [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628) for details.
+If you are removing a lot of markers it will almost definitely be better to call clearLayers then call addLayers to add the markers you don't want to remove back in. 
+많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 삭제를 원하지 않는 마커를 다시 추가하기 위해 addLayers를 호출하는 것이 좋습니다.  상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
+
 
 ### Other Methods
 ````
