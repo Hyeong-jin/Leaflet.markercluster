@@ -24,7 +24,7 @@ Bower를 통한 설치: `bower install leaflet.markercluster`
 
 ```javascript
 var markers = new L.MarkerClusterGroup();
-markers.addLayer(new L.Marker(getRandomLatLng(map)));
+markers.addLayer(new L.Marker(getRandomLatLng(map))); 
 ... Add more layers ...
 map.addLayer(markers);
 ```
