@@ -130,23 +130,22 @@ addLayer, removeLayer 그리고 clearLayers 를 사용할 수 있고 대부분�
 ### 대량의 마커를 추가 및 삭제하기
 addLayers와 removeLayers는 대량으로 마커를 추가 삭제하기 위한 메소드입니다. 마커를 대량으로 추가/삭제시 단일 버전 보다 선호됩니다. 각각은 마커의 배열을 받습니다.
 
-If you are removing a lot of markers it will almost definitely be better to call clearLayers then call addLayers to add the markers you don't want to remove back in. 
-많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 삭제를 원하지 않는 마커를 다시 추가하기 위해 addLayers를 호출하는 것이 좋습니다.  상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
+많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 addLayers를 호출하여 삭제를 원하지 않는 마커를 다시 추가하는 것이 좋습니다.  상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
 
 
-### Other Methods
+### 다른 메소드
 ````
-hasLayer(layer): Returns true if the given layer (marker) is in the MarkerClusterGroup
-zoomToShowLayer(layer, callback): Zooms to show the given marker (spidifying if required), calls the callback when the marker is visible on the map
-addLayers(layerArray): Adds the markers in the given array from the MarkerClusterGroup in an efficent bulk method.
-removeLayers(layerArray): Removes the markers in the given array from the MarkerClusterGroup in an efficent bulk method.
+hasLayer(layer): 주어진 layer(marker)가 MarkerClusterGroup안에 있다면 true를 반환
+zoomToShowLayer(layer, callback): 주어진 마커를 (필요하면 클러스터를 나선형(spidifying)으로 풀어서) 보여주고 확대합니다. 지도상에 마커가 보여질때 callback을 호출합니다.
+addLayers(layerArray): 효율적인 대량의 방법으로 MarkerClusterGroup에서 주어진 배열의 마커들을 추가합니다.
+removeLayers(layerArray): 효율적인 대량의 방법으로 MarkerClusterGroup에서 주어진 배열의 마커들을 삭제합니다.
 ````
 
-## Handling LOTS of markers
-The Clusterer can handle 10000 or even 50000 markers (in chrome). IE9 has some issues with 50000.
+## 많은 양의 마커 처리
+(크롬에서) Clusterer는 마커를 10000개나 50000개 까지도 처리할 수 있습니다. IE9는 50000개에서 문제가 발생합니다.
 [realworld 10000 example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.10000.html)
 [realworld 50000 example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.50000.html)
-Performance optimizations could be done so these are handled more gracefully (Running the initial clustering over multiple JS calls rather than locking the browser for a long time)
+성능 최적화를 통해 더 적절하게 처리됩니다(긴 시간동안 브라우저를 사용하지 못하게 하지 않고 여러 JS 호출을 통해 클러스터링 초기화를 실행합니다).
 
 ### License
 
