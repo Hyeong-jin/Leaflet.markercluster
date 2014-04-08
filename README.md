@@ -15,13 +15,12 @@ Bower를 통한 설치: `bower install leaflet.markercluster`
 
 사용법은 포함된 예제를 보십시오.
 
-The [realworld example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.388.html) is a good place to start, it uses all of the defaults of the clusterer.
-[realworld example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.388.html) 초보자가 시작하기 좋습니다. 이것은 클러스터의 모든 기본기능을 사용합니다.
+[realworld example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld.388.html) 처음 시작하기 좋습니다. 이것은 클러스터의 모든 기본기능을 사용합니다.
 
-클러스터의 표현과 동작을 커스터마이징 하는 방법을 알아보려면, [custom example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html)을 살표보십시오. 
+클러스터의 표현과 동작을 커스터마이징 하는 방법을 알아보려면, [custom example](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-custom.html)을 확인하십시오. 
 
 ### 사용방법
-마커를 추가하기 위한 새로운 MarkerClusterGroup을 생성하고, 맵에 추가하십시오.
+마커를 추가하기 위한 새로운 MarkerClusterGroup을 생성하고, 지도에 추가하십시오.
 
 ```javascript
 var markers = new L.MarkerClusterGroup();
