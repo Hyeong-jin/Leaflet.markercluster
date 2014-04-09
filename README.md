@@ -36,7 +36,7 @@ map.addLayer(markers);
 * **spiderfyOnMaxZoom**: 최대로 확대한 상태에서 클러스터를 클릭했을 때, 마커들을 볼 수 있도록 나선형으로 마커를 배치합니다(spiderfy). 그래서 모든 마커들을 볼 수 있습니다.
 * **removeOutsideVisibleBounds**: 성능을 위해서 뷰포트로부터 너무 먼 클러스터와 마커를 지도에서 지웁니다.
 
-MarkerClusterGroup 생성시에 원한다면 이러한 것들을 비활성화 할수 있습니다. 
+MarkerClusterGroup 원한다면 생성시에 비활성화 할수 있습니다. 
 ```javascript
 var markers = new L.MarkerClusterGroup({ 
       spiderfyOnMaxZoom  : false, 
@@ -68,8 +68,8 @@ var markers = new L.MarkerClusterGroup({
 * **removeOutsideVisibleBounds**: 성능을 위해서 뷰포트로부터 너무 먼 클러스터와 마커를 지도에서 지웁니다. 
 
 다른 옵션
-* **animateAddingMarkers**: true로 설정하면 지도에 MarkerClusterGroup를 추가한 후에 개별 마커를 (MarkerClusterGroup에) 추가하는 것은 마커를 추가하고 움직여서 클러스터로 합칩니다. 대량의 마커를 추가할 때 보다 나은 성능을 위해서 기본 설정은 false입니다. addLayers는 지원하지 않고, 개별 마커를 가진 addLayers만 지원합니다.
-* **disableClusteringAtZoom**: If set, at this zoom level and below markers will not be clustered. This defaults to disabled. [예제](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld-maxzoom.388.html)
+* **animateAddingMarkers**: true로 설정하면 지도에 MarkerClusterGroup를 추가한 후에 개별 마커를 (MarkerClusterGroup에) 추가하는 것은 마커를 추가하고 움직여서 클러스터로 합칩니다. 대량의 마커를 추가할 때, 보다 나은 성능을 위해서 기본 설정은 false입니다. addLayers는 지원하지 않고, 개별 마커를 가진 addLayers만 지원합니다.
+* **disableClusteringAtZoom**: 줌을 설정하면 이하의 줌 레벨에서 마커들은 클러스터링 되지 않을 것입니다. 기본값은 disabled입니다. [예제](http://leaflet.github.com/Leaflet.markercluster/example/marker-clustering-realworld-maxzoom.388.html)
 * **maxClusterRadius**: 중앙 마커에서 부터 커버하는 클러스터의 최대 반경(in pixels). 기본값은 80 입니다. 작은 값이면 더 작은 클러스터를 만들것입니다. 또한 현재 지도의 줌을 받아서 최대 클러스터 반경을 pixcel로 반환하는 함수를 사용할 수도 있습니다.
 * **polygonOptions**: 클러스터의 경계를 보여주기 위해 L.Polygon(points, options)를 만들때 전달하는 옵션
 * **singleMarkerMode**: true로 설정하면, 같은 크기의 클러스터로 보이게 하기 위해 추가된 모든 마커들의 아이콘을 대체합니다.
@@ -128,7 +128,7 @@ addLayer, removeLayer 그리고 clearLayers 를 사용할 수 있고 대부분�
 ### 대량의 마커를 추가 및 삭제하기
 addLayers와 removeLayers는 대량으로 마커를 추가 삭제하기 위한 메소드입니다. 마커를 대량으로 추가/삭제시 단일 버전 보다 선호됩니다. 각각은 마커의 배열을 받습니다.
 
-많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 addLayers를 호출하여 삭제를 원하지 않는 마커를 다시 추가하는 것이 좋습니다. 상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
+많은 양의 마커를 삭제하려면 거의 확실히 clearLayers를 호출하고 addLayers를 호출하여 삭제를 원치 않는 마커를 다시 추가하는 것이 좋습니다. 상세한 것은 [#59](https://github.com/Leaflet/Leaflet.markercluster/issues/59#issuecomment-9320628)를 보십시오.
 
 
 ### 다른 메소드
